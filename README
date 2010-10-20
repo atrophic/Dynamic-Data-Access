@@ -3,6 +3,6 @@ To use this in your own project:
 - Use .NET 3.5 or later.  (It could become 2.0 compatible with very minimal changes, an exercise for the reader.)
 - Change the connection string name in the DynamicDataAccess class.
 - Do one of the following three things.
-	- Ensure your Data Object propeties match the names of the columns in the table.
-	- Apply the ColumnInTable attribute to your Data Object properties that do not match
+	- Ensure your Data Object properties match the names of the columns in the table.
+	- Apply the ColumnInTable attribute to your Data Object properties that do not match.
 	- Pass as a parameter a mapping function matching the DataMapper delegate found in DynamicDataAccess.
