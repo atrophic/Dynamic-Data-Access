@@ -2,6 +2,7 @@
 Imports System.Reflection
 Imports System.ComponentModel
 Imports System.Data
+Imports System.Linq
 
 Public Class DynamicDataAccess
 
@@ -28,16 +29,7 @@ Public Class DynamicDataAccess
             Dim nameInDB As String
 
             ' see if the ColumnInTable attribute is set, use it if it is or use the property's name if it isn't
-
-            ' non-linq version of setting attr
-            Dim attrCollection As Object() = prop.GetCustomAttributes(GetType(ColumnInTableAttribute), False)
-            Dim attr As New ColumnInTableAttribute("")
-            If attrCollection.Length > 0 Then
-                attr = TryCast(attrCollection(0), ColumnInTableAttribute)
-            End If
-
-            ' linq version of setting attr (can switch to this after .NET framework is >= 3.5
-            ' Dim attr As ColumnInTableAttribute = prop.GetCustomAttributes(GetType(ColumnInTableAttribute), False).Cast(Of ColumnInTableAttribute).SingleOrDefault
+            Dim attr As ColumnInTableAttribute = prop.GetCustomAttributes(GetType(ColumnInTableAttribute), False).Cast(Of ColumnInTableAttribute).SingleOrDefault
 
             ' Get the name as it appears in the database either from ColumnInTable attribute, or from the property name itself
             If Not String.IsNullOrEmpty(attr.ColumnName) Then
